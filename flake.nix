@@ -97,6 +97,8 @@
       # Deprecated
       defaultTemplate = self.templates.default;
 
+      flakeModules.default = { nixpkgs.overlays = [ self.overlays.default ]; };
+
       overlays.default = final: prev: {
         clj-builder = final.callPackage ./pkgs/cljBuilder.nix { };
         deps-lock = final.callPackage ./pkgs/depsLock.nix { };
